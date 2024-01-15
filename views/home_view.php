@@ -1,3 +1,20 @@
+<div class="container mt-5">
+    <h3>Last 3 Added Categories</h3>
+    <ul class="list-group">
+        <?php
+        $categoryQuery = "SELECT * FROM categories ORDER BY category_id DESC LIMIT 3";
+        $categoryStmt = $db->query($categoryQuery);
+
+        while ($categoryRow = $categoryStmt->fetch(PDO::FETCH_ASSOC)) {
+            $categoryId = $categoryRow['category_id'];
+            $categoryName = $categoryRow['category_name'];
+        ?>
+            <li class="list-group-item"><?php echo $categoryName; ?></li>
+        <?php
+        }
+        ?>
+    </ul>
+</div>
 
     <div class="container mt-5">
         <div class="row">
