@@ -83,7 +83,7 @@
         }
         ?>
       </ul>
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <input class="form-control me-2" type="search" placeholder="Search" id="searchbar" aria-label="Search">
     </div>
   </div>
 </nav>
@@ -93,5 +93,18 @@
 
     <footer></footer>
     <script src="<?= PATH ?>assets/js/main.js"></script>
-</body>
+    <script>
+        formData = new FormData();
+        let s = document.getElementById("searchbar")
+        s.addEventListener("keyup", ()=>{
+          formData.append("searchValue", s.value)
+          fetch("index.php?page=search", {
+            method: "post",
+            body: formData
+          })
+          .then(response => response.json())
+          .then(data => console.log(data))
+        })
+    </script>
+  </body>
 </html>
