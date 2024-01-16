@@ -95,15 +95,25 @@
     <script src="<?= PATH ?>assets/js/main.js"></script>
     <script>
         formData = new FormData();
+        b = document.querySelectorAll('.blogCard')
         let s = document.getElementById("searchbar")
         s.addEventListener("keyup", ()=>{
-          formData.append("searchValue", s.value)
-          fetch("index.php?page=search", {
-            method: "post",
-            body: formData
-          })
-          .then(response => response.json())
-          .then(data => console.log(data))
+          searchItem = s.value.toLowerCase()
+          for(let i = 0 ; i < b.length ; i++){
+            cardText = b[i].textContent.toLowerCase()
+            if(cardText.includes(searchItem)){
+              b[i].style.display = "block";
+            } else {
+              b[i].style.display = "none";
+            }
+          }
+          //   formData.append("searchValue", s.value)
+        //   fetch("index.php?page=search", {
+        //     method: "post",
+        //     body: formData
+        //   })
+        //   .then(response => response.json())
+        //   .then(data => console.log(data))
         })
     </script>
   </body>

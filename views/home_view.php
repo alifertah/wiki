@@ -30,7 +30,7 @@
                 $categoryName = $row['post_category'];
                 $postAuthor = $row['post_author'];
             ?>
-                <div class="col-lg-6">
+                <div class="col-lg-6 blogCard">
                     <div class="blog-post">
                         <img src="https://via.placeholder.com/800x400" alt="Sample Image" class="img-fluid">
                         <div class="info">
